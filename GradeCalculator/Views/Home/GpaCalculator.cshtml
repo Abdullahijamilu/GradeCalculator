@@ -1,0 +1,17 @@
+﻿@model Course;
+
+<form asp-action="Getentry" asp-controller="Home" method="post">
+    <input type="text" name="Name" placeholder="Enter subject" required />
+    <input type="text" name="CreditUnit" placeholder="Enter credit unit" required />
+    <select name="Grade" required>
+        <option value="5">A</option>
+        <option value="4">B</option>
+        <option value="3">C</option>
+        <option value="2">D</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-controller="Home" asp-action="Details" class="btn btn-primary">Details</a>
+</form>
+
+
+

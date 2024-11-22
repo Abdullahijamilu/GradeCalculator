@@ -1,0 +1,43 @@
+﻿@model List<Course>
+
+<form asp-action="Details" method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Credit Unit</th>
+                <th>Grade Point</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            <input type="text" name="courses[@i].Name" value="@Model[i].Name" readonly />
+                        </td>
+                        <td>
+                            <input type="number" name="courses[@i].CreditUnit" value="@Model[i].CreditUnit" readonly />
+                        </td>
+                        <td>
+                            <input type="number" name="courses[@i].Grade" value="@Model[i].Grade" readonly />
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Calculate GPA</button>
+    <a asp-action="Index" asp-controller="Home">Index</a>
+    <a asp-action="Delete" asp-controller="Home" onclick="return confirm('Are you sure you want to delete all records?');">Delete</a>
+   
+</form>
+
+@if (ViewBag.GPA != null)
+{
+    <h3>Your GPA is: @ViewBag.GPA</h3>
+}
+
+
